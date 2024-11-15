@@ -17,6 +17,5 @@ def generate_gemini_flash_response(user_message, user_id, chat_history):
     response = chat.send_message(user_message)
 
     chat_history[user_id].append({"role": "model", "parts": response.text})
-    print("used flash")
 
     return response.text

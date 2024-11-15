@@ -1,2 +1,6 @@
 .env
 __pycache__/
+.venv/
+.idea/
+logs/
+bot_activity.log
