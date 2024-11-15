@@ -1,5 +1,5 @@
 from aiogram import Router, types
-from utils import escape_markdown, chat_history, user_model_preference
+from utils import escape_markdown, chat_history, user_model_preference, token_counts_pro, token_counts_flash
 
 
 router = Router()
@@ -31,5 +31,14 @@ async def handle_callback_query(callback_query: types.CallbackQuery):
             user_model_preference[user_id] = "gemini-1.5-flash"
             await callback_query.message.answer(escape_markdown("Модель переключена на Flash."))
 
+        await callback_query.answer()
+
+    elif callback_query.data == "look_up_tokens":
+        response = ""
+        if user_id in token_counts_pro:
+            response += f"Ваши лимиты по Gemini Pro: {token_counts_pro[user_id]}/5000"
+        if user_id in token_counts_flash:
+            response += f"\nВаши лимиты по Gemini Flash: {token_counts_flash[user_id]}/25000"
+        await callback_query.message.answer(escape_markdown(response))
         await callback_query.answer()
 

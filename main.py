@@ -24,7 +24,7 @@ async def main():
     dp.include_router(commands.router)
     dp.include_router(messages.router)
     dp.include_router(callbacks.router)
-    
+
     await dp.start_polling(bot)
 
 if __name__ == '__main__':

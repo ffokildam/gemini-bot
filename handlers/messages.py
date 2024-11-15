@@ -49,7 +49,8 @@ async def handle_message(message: types.Message):
             [InlineKeyboardButton(
                 text=escape_markdown(f"Переключить на {'Pro' if user_model_preference[user_id] == 'gemini-1.5-flash' else 'Flash'}"),
                 callback_data="switch_model"
-            )]
+            )],
+            [InlineKeyboardButton(text="Просмотреть мои лимиты токенов",callback_data="look_up_tokens")],
         ]
     )
 
